@@ -34,10 +34,10 @@ app.post("/",function(req, res){
 
 	const jsonData = JSON.stringify(data);
 
-	const url = "https://us17.api.mailchimp.com/3.0/lists/1682f095ff" 
+	const url = "https://usX.api.mailchimp.com/3.0/lists/1682f095ff" 
 	const options = {
 		method: "POST",
-		auth: "ashutosh:58bac2f27fe0c076f10f902db499c84a-us17"
+		auth: "ashutosh:use API key from mailchimp"
 	}
 
   
@@ -46,14 +46,14 @@ app.post("/",function(req, res){
 
     	if (response.statusCode === 200) {
 
-    		res.send("Success");
+    		res.sendFile(__dirname + "/success.html");
     	}
     	else {
-    		res.send("There was error with signup please try again");
+    		res.sendFile(__dirname + "/faliur.html");
     	}
 
    		response.on("data", function(data){
-   			console.log(JSON.parse(data));
+   			
    		})
 
     });
@@ -62,10 +62,10 @@ app.post("/",function(req, res){
     request.end();
 });
 
+app.post("/faliur", function(req, res){
+	res.redirect("/")
+})
 
 
 
-// api key
-// 58bac2f27fe0c076f10f902db499c84a-us17
-//list id
-// 1682f095ff
+
